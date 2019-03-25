@@ -30,16 +30,35 @@ public class TestCal {
         String str = data1;
         String consequence = str;
         String list[] = null;
-        list = cal.compute(data1, consequence);
+        String mark = null;
+        list = cal.compute(data1, consequence,mark);
        /* for (int i = 0; i < list.length; i++) {
             System.out.println("---"+list[i]);
         }*/
        int i = random.nextInt(3)+1;
        int j=0;
+       String op =null;
+       int flag = 0;
        while(j<i){
-           list = cal.compute(list[0], list[1]);
+           op = list[2];
+           System.out.println("++++" + op);
+           if(flag ==0 && j == i-1){
+               mark = op;
+               list = cal.compute(list[0], list[1], mark);
+               /*System.out.println("already");*/
+           }else{
+               list = cal.compute(list[0], list[1], mark);
+           }
+
+           if(list[2] != op ){
+               flag = 1;
+           }
+
            j++;
        }
+
+
+
         consequence = list[1]+"="+list[0];
         System.out.println(list[1]+"="+list[0]);
         Calculate.writeToFile(consequence+"\n");

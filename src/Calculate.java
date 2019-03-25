@@ -110,6 +110,7 @@ public class Calculate {
         try{
             FileWriter writer = new FileWriter("result.txt",true);
             writer.write(result);
+            writer.write("\r\n");
             writer.flush();
             writer.close();
             return true;

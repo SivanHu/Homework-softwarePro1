@@ -91,8 +91,8 @@ public class FractionCal {
     static String operation1[] = {"+","-","*","÷"};
 
     // 封装了具体运算，主要为对输入进行转换，对输出封装
-    public static String[] compute(String data1, String consequence) {
-        String list[] = new String[2];
+    public static String[] compute(String data1, String consequence, String mark) {
+        String list[] = new String[3];
 
         Random random = new Random();
         /*int one = random.nextInt(10)+1;
@@ -112,7 +112,7 @@ public class FractionCal {
         }
         //
         String data2 = three+"/"+four;
-        StringBuffer stringBuffer = new StringBuffer();
+
 
 
         //将生成的真分数的分子分母取出
@@ -129,7 +129,12 @@ public class FractionCal {
 
         //生成相应的运算
         String op = operation1[random.nextInt(4)];
-        System.out.println(op);
+
+        System.out.println("-----" + mark);
+        /*System.out.println(op);*/
+        while(op == mark && mark!=null){
+            op = operation1[random.nextInt(4)];
+        }
 
 
         FractionCal result;
@@ -179,8 +184,11 @@ public class FractionCal {
         }
         list[0] = str;
         list[1] = consequence;
+        list[2] = op;
 
         return list;
     }
+
+
 
 }
